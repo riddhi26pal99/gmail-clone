@@ -13,13 +13,18 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import PersonIcon from '@material-ui/icons/Person';
 import DuoIcon from '@material-ui/icons/Duo';
 import CallIcon from '@material-ui/icons/Call';
+import { useDispatch } from 'react-redux';
+import { openSendMessage } from '../../features/mailSlice';
 
 
 function SideBar() {
+    const dispatch = useDispatch();
+
     return (
         <div className="SideBar">
             <Button startIcon = {<AddIcon fontSize="large" />}
                 className="sidebar_compose"
+                onClick = { () => dispatch(openSendMessage()) }
             >
                 Compose 
             </Button>
