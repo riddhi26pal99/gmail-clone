@@ -19,10 +19,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import PrintIcon from '@material-ui/icons/Print';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+import { useSelector } from 'react-redux';
+import { selectOpenMail } from "../../features/mailSlice";
 
 function Mail() {
 
-    const history = useHistory()
+    const history = useHistory();
+    const selectedMail = useSelector(selectOpenMail);
 
     return (
         <div className="mail">
@@ -71,10 +74,10 @@ function Mail() {
                 <div className="mail_bodyHeader">
 
                     <div className="mail_headerLeft">
-                        <h2>Subject</h2>
+                        <h2>{selectedMail?.subject}</h2>
                         <LabelImportantIcon className="mail_important" />
-                        <p>Title</p>
-                        <p className="message_time">10pm</p>
+                        <p>{selectedMail?.title}</p>
+                        <p className="message_time">{selectedMail?.time}</p>
                     </div>
 
                     <div className="mail_headerRight">
@@ -93,7 +96,7 @@ function Mail() {
 
                 <div className="mail_message">
                     <p>
-                        this is the mail message
+                        {selectedMail?.description}
                     </p>
                 </div>
 
